@@ -1,20 +1,50 @@
 [
   {
     "event_id": "evt-001",
-    "summary": "Viral criticism emerges after misinformation thread cites incorrect model behavior claims.",
+    "summary": "Viral Twitter/X thread claims Claude provided instructions for synthesizing a controlled substance. Thread has 50K+ retweets and is being amplified by AI critics. Preliminary review suggests the screenshots may be fabricated or from an older model version.",
     "source": "social-monitor",
-    "timestamp": "2026-03-01T12:00:00Z"
+    "timestamp": "2026-03-05T12:00:00Z"
   },
   {
     "event_id": "evt-002",
-    "summary": "Regulator inquiry mentions potential AI safety incident in public testimony.",
+    "summary": "FTC Commissioner announces investigation into AI companies' data collection practices, specifically naming Anthropic and two other companies. Commissioner's statement references the recent privacy group complaint.",
     "source": "policy-monitor",
-    "timestamp": "2026-03-01T12:15:00Z"
+    "timestamp": "2026-03-05T12:15:00Z"
   },
   {
     "event_id": "evt-003",
-    "summary": "Competitor launch announcement receives neutral analyst reaction.",
-    "source": "news-monitor",
-    "timestamp": "2026-03-01T12:30:00Z"
+    "summary": "OpenAI announces GPT-5 enterprise pricing at 30% below Claude enterprise tier. Several Anthropic enterprise prospects have forwarded the pricing comparison to their account managers asking for price matching.",
+    "source": "competitive-intel",
+    "timestamp": "2026-03-05T13:00:00Z"
+  },
+  {
+    "event_id": "evt-004",
+    "summary": "Minor service degradation on Claude API — latency increased 2x for 15 minutes, now resolved. No customer complaints received yet. Status page was updated in real time.",
+    "source": "eng-monitor",
+    "timestamp": "2026-03-05T14:00:00Z"
+  },
+  {
+    "event_id": "evt-005",
+    "summary": "New York Times publishes opinion piece arguing AI safety is 'a marketing strategy, not a research agenda,' using Anthropic as the primary example. The piece quotes two former employees critical of the company's commercialization pace.",
+    "source": "media-monitor",
+    "timestamp": "2026-03-05T15:00:00Z"
+  },
+  {
+    "event_id": "evt-006",
+    "summary": "Anthropic's VP of Engineering tweets about a personal political opinion unrelated to AI. The tweet is getting attention and some replies are associating the views with Anthropic as a company.",
+    "source": "social-monitor",
+    "timestamp": "2026-03-05T16:00:00Z"
+  },
+  {
+    "event_id": "evt-007",
+    "summary": "Positive: Kaiser Permanente pilot results show 40% reduction in clinical documentation time using Claude. Kaiser's CMO posts a LinkedIn endorsement calling it 'the most responsible AI deployment we've seen.'",
+    "source": "media-monitor",
+    "timestamp": "2026-03-05T17:00:00Z"
+  },
+  {
+    "event_id": "evt-008",
+    "summary": "Reddit thread in r/MachineLearning claims Claude's latest model update degraded performance on coding tasks. Thread has 500+ upvotes. Internal benchmarks do not confirm the claim.",
+    "source": "social-monitor",
+    "timestamp": "2026-03-05T18:00:00Z"
   }
 ]

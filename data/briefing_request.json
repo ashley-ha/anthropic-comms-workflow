@@ -1,0 +1,55 @@
+{
+  "spokesperson": "Dario Amodei",
+  "engagement_type": "Live Interview",
+  "outlet": "CNBC Squawk Box",
+  "date": "2026-03-07",
+  "topics": [
+    "Claude enterprise adoption",
+    "AI safety and responsible scaling",
+    "Competition with OpenAI and Google",
+    "EU AI Act compliance"
+  ],
+  "key_messages": [
+    "Anthropic builds the most trustworthy AI systems in the industry — safety and capability are not trade-offs, they reinforce each other.",
+    "Claude enterprise adoption is accelerating because regulated industries trust our safety-first approach. Kaiser Permanente and Brazil's education ministry chose Claude specifically for our safety track record.",
+    "We welcome regulation that raises the bar for everyone. The EU AI Act creates a framework that responsible companies like Anthropic are already aligned with.",
+    "Competition makes the whole field better. We're focused on building the most reliable, steerable AI — not on winning benchmark races."
+  ],
+  "recent_coverage": [
+    {
+      "title": "Anthropic expands Claude enterprise tier with SOC 2 compliance",
+      "body": "Major enterprise update with compliance features for regulated industries.",
+      "source": "TechCrunch",
+      "url": "https://example.com/anthropic-enterprise",
+      "published_at": "2026-03-05T08:00:00Z"
+    },
+    {
+      "title": "OpenAI launches GPT-5 with reasoning capabilities",
+      "body": "Competitive launch with benchmarks showing parity on some evaluations.",
+      "source": "The Information",
+      "url": "https://example.com/gpt5-launch",
+      "published_at": "2026-03-05T10:00:00Z"
+    },
+    {
+      "title": "NYT opinion: AI safety is a marketing strategy, not research",
+      "body": "Critical piece using Anthropic as primary example, quoting former employees.",
+      "source": "New York Times",
+      "url": "https://example.com/nyt-safety-marketing",
+      "published_at": "2026-03-05T15:00:00Z"
+    },
+    {
+      "title": "Kaiser Permanente deploys Claude for clinical documentation",
+      "body": "Positive pilot results showing 40% time reduction with human oversight.",
+      "source": "STAT News",
+      "url": "https://example.com/kaiser-claude-pilot",
+      "published_at": "2026-03-05T14:00:00Z"
+    },
+    {
+      "title": "FTC Commissioner announces investigation into AI data practices",
+      "body": "Anthropic named alongside others in data collection inquiry.",
+      "source": "Washington Post",
+      "url": "https://example.com/ftc-ai-investigation",
+      "published_at": "2026-03-05T12:15:00Z"
+    }
+  ]
+}

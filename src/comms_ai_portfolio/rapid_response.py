@@ -1,14 +1,12 @@
+# ABOUTME: Rapid response workflow powered by Claude for event triage.
+# ABOUTME: Assesses severity, assigns priority tiers, generates talking points and escalation guidance.
 from __future__ import annotations
 
 import json
 from pathlib import Path
 from typing import Any
 
-SEVERITY_TERMS = {
-    "critical": {"data leak", "safety incident", "lawsuit", "regulator inquiry", "security breach"},
-    "high": {"negative trend", "viral criticism", "misinformation", "policy pushback"},
-    "medium": {"competitor launch", "analyst note", "pricing reaction"},
-}
+from .claude_client import assess_event
 
 ROUTING = {
     "P0": ["Comms Lead", "Legal", "Policy", "Executive On-Call"],
@@ -16,56 +14,48 @@ ROUTING = {
     "P2": ["Comms Operations"],
 }
 
-
-def _normalize(text: str) -> str:
-    return " ".join(text.lower().split())
-
-
-def priority_score(summary: str) -> int:
-    blob = _normalize(summary)
-    score = 0
-    score += 5 * sum(1 for kw in SEVERITY_TERMS["critical"] if kw in blob)
-    score += 3 * sum(1 for kw in SEVERITY_TERMS["high"] if kw in blob)
-    score += 1 * sum(1 for kw in SEVERITY_TERMS["medium"] if kw in blob)
-    return score
-
-
-def tier_from_score(score: int) -> str:
-    if score >= 7:
-        return "P0"
-    if score >= 3:
-        return "P1"
-    return "P2"
-
-
-def response_sla_hours(tier: str) -> int:
-    return {"P0": 1, "P1": 4, "P2": 24}[tier]
+SLA_HOURS = {"P0": 1, "P1": 4, "P2": 24}
 
 
 def build_alerts(input_path: Path, output_path: Path) -> dict[str, Any]:
+    """Assess events with Claude and build prioritized alert output.
+
+    Each event is sent to Claude for severity scoring, tier assignment,
+    rationale, and response talking points.
+
+    Args:
+        input_path: Path to JSON file containing event objects.
+        output_path: Path where the JSON alerts will be written.
+
+    Returns:
+        Summary dict with alert_count and per-tier counts.
+    """
     with input_path.open("r", encoding="utf-8") as f:
         events = json.load(f)
 
     alerts: list[dict[str, Any]] = []
 
     for event in events:
-        score = priority_score(event["summary"])
-        tier = tier_from_score(score)
-        alerts.append(
-            {
-                "event_id": event["event_id"],
-                "timestamp": event["timestamp"],
-                "source": event["source"],
-                "summary": event["summary"],
-                "priority_score": score,
-                "tier": tier,
-                "owners": ROUTING[tier],
-                "response_sla_hours": response_sla_hours(tier),
-                "human_review_required": tier in {"P0", "P1"},
-            }
-        )
+        assessment = assess_event(event)
+        tier = assessment["tier"]
+
+        alerts.append({
+            "event_id": event["event_id"],
+            "timestamp": event["timestamp"],
+            "source": event["source"],
+            "summary": event["summary"],
+            "priority_score": assessment["priority_score"],
+            "tier": tier,
+            "owners": ROUTING[tier],
+            "response_sla_hours": SLA_HOURS[tier],
+            "human_review_required": tier in {"P0", "P1"},
+            "rationale": assessment["rationale"],
+            "talking_points": assessment["talking_points"],
+            "escalation_note": assessment["escalation_note"],
+        })
 
     alerts.sort(key=lambda a: a["priority_score"], reverse=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(alerts, indent=2) + "\n", encoding="utf-8")
 
     return {

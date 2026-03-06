@@ -1,38 +1,65 @@
+# ABOUTME: Integration tests for the press digest workflow.
+# ABOUTME: Calls Claude API to verify article analysis and digest generation.
 from pathlib import Path
+import json
 import tempfile
 import unittest
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from comms_ai_portfolio.press_digest import (
-    classify_sentiment,
-    classify_topic,
-    relevance_score,
-    build_digest,
-)
+from comms_ai_portfolio.claude_client import analyze_article
+from comms_ai_portfolio.press_digest import build_digest
 
 
-class PressDigestTests(unittest.TestCase):
-    def test_relevance_score(self) -> None:
-        text = "Anthropic policy update for Claude enterprise release"
-        self.assertGreaterEqual(relevance_score(text), 2)
+class TestArticleAnalysis(unittest.TestCase):
+    """Test Claude's article analysis produces valid structured output."""
 
-    def test_topic_classification(self) -> None:
-        text = "Senate regulation and policy debate around AI governance"
-        self.assertEqual(classify_topic(text), "policy")
+    def test_highly_relevant_article(self) -> None:
+        article = {
+            "title": "Anthropic launches Claude 4 with breakthrough safety features",
+            "body": "Anthropic released Claude 4 today with new constitutional AI improvements and enterprise features.",
+            "source": "TechCrunch",
+            "url": "https://example.com/claude4",
+            "published_at": "2026-03-05T08:00:00Z",
+        }
+        result = analyze_article(article)
 
-    def test_sentiment_classification(self) -> None:
-        text = "Strong adoption and positive enterprise growth"
-        self.assertEqual(classify_sentiment(text), "positive")
+        self.assertIn("relevance_score", result)
+        self.assertIn("topic", result)
+        self.assertIn("sentiment", result)
+        self.assertIn("rationale", result)
+        self.assertIsInstance(result["relevance_score"], int)
+        self.assertGreaterEqual(result["relevance_score"], 7)
+        self.assertIn(result["topic"], ["policy", "product", "business", "safety", "competition", "general"])
+        self.assertIn(result["sentiment"], ["positive", "negative", "neutral", "mixed"])
 
-    def test_build_digest(self) -> None:
+    def test_irrelevant_article(self) -> None:
+        article = {
+            "title": "Local sports team wins championship",
+            "body": "The hometown team celebrated their victory in the regional basketball finals.",
+            "source": "Local News",
+            "url": "https://example.com/sports",
+            "published_at": "2026-03-05T08:00:00Z",
+        }
+        result = analyze_article(article)
+
+        self.assertLessEqual(result["relevance_score"], 3)
+
+    def test_build_digest_integration(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "digest.md"
-            summary = build_digest(repo_root / "data" / "mock_articles.json", output, threshold=2)
+            summary = build_digest(
+                repo_root / "data" / "mock_articles.json",
+                output,
+                threshold=6,
+            )
             self.assertTrue(output.exists())
-            self.assertGreaterEqual(summary["selected_count"], 1)
+            self.assertGreater(summary["selected_count"], 0)
+            self.assertIn("topic_mix", summary)
+            content = output.read_text()
+            self.assertIn("# Daily Press Digest", content)
 
 
 if __name__ == "__main__":

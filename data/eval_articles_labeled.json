@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Anthropic raises $2B in new funding round led by Google",
+    "body": "Anthropic closed a $2 billion funding round, with Google as the lead investor. The company said the funds will support scaling Claude and expanding its safety research team.",
+    "source": "Bloomberg",
+    "url": "https://example.com/anthropic-funding",
+    "published_at": "2026-03-01T08:00:00Z",
+    "labels": {
+      "relevance_score": 10,
+      "topic": "business",
+      "sentiment": "positive"
+    }
+  },
+  {
+    "title": "AI regulation debate heats up in Congress",
+    "body": "Multiple bills targeting AI oversight were introduced this week. None specifically mention Anthropic but the proposed requirements would affect all frontier AI developers.",
+    "source": "Politico",
+    "url": "https://example.com/ai-congress",
+    "published_at": "2026-03-01T09:00:00Z",
+    "labels": {
+      "relevance_score": 7,
+      "topic": "policy",
+      "sentiment": "neutral"
+    }
+  },
+  {
+    "title": "Local bakery wins regional baking competition",
+    "body": "A small bakery in Portland won first place in the Pacific Northwest Baking Championship with their sourdough entry.",
+    "source": "Portland Tribune",
+    "url": "https://example.com/bakery-wins",
+    "published_at": "2026-03-01T10:00:00Z",
+    "labels": {
+      "relevance_score": 1,
+      "topic": "general",
+      "sentiment": "positive"
+    }
+  },
+  {
+    "title": "Former Anthropic researcher publishes critical blog post about safety-washing",
+    "body": "A former member of Anthropic's alignment team published a detailed critique arguing the company prioritizes commercial growth over genuine safety research. The post includes specific claims about internal pressure to ship faster.",
+    "source": "Personal Blog",
+    "url": "https://example.com/safety-washing-critique",
+    "published_at": "2026-03-01T11:00:00Z",
+    "labels": {
+      "relevance_score": 10,
+      "topic": "safety",
+      "sentiment": "negative"
+    }
+  },
+  {
+    "title": "Meta releases Llama 4 as open-source model",
+    "body": "Meta released Llama 4, its latest open-source language model. Benchmarks show strong performance, though it trails Claude and GPT-5 on reasoning tasks. The open-source release could put pricing pressure on commercial API providers.",
+    "source": "Ars Technica",
+    "url": "https://example.com/llama4",
+    "published_at": "2026-03-01T12:00:00Z",
+    "labels": {
+      "relevance_score": 7,
+      "topic": "competition",
+      "sentiment": "neutral"
+    }
+  },
+  {
+    "title": "New study finds AI assistants improve productivity by 30% in knowledge work",
+    "body": "A Harvard Business School study found that employees using AI coding and writing assistants completed tasks 30% faster with higher quality. The study tested multiple AI tools but did not single out any specific provider.",
+    "source": "Harvard Business Review",
+    "url": "https://example.com/ai-productivity-study",
+    "published_at": "2026-03-01T13:00:00Z",
+    "labels": {
+      "relevance_score": 5,
+      "topic": "general",
+      "sentiment": "positive"
+    }
+  },
+  {
+    "title": "Anthropic's Claude cited in Supreme Court amicus brief on AI liability",
+    "body": "An amicus brief filed in a pending Supreme Court case on AI liability specifically references Claude's safety features as an example of responsible AI deployment. The brief argues that companies with robust safety measures should face different liability standards.",
+    "source": "Law360",
+    "url": "https://example.com/scotus-ai-liability",
+    "published_at": "2026-03-01T14:00:00Z",
+    "labels": {
+      "relevance_score": 9,
+      "topic": "policy",
+      "sentiment": "positive"
+    }
+  },
+  {
+    "title": "Cryptocurrency markets rally on Fed rate cut expectations",
+    "body": "Bitcoin and Ethereum both rose sharply as markets priced in a Federal Reserve rate cut next quarter. Crypto analysts point to growing institutional adoption.",
+    "source": "CoinDesk",
+    "url": "https://example.com/crypto-rally",
+    "published_at": "2026-03-01T15:00:00Z",
+    "labels": {
+      "relevance_score": 1,
+      "topic": "general",
+      "sentiment": "neutral"
+    }
+  },
+  {
+    "title": "Claude outperforms GPT-5 on new medical reasoning benchmark",
+    "body": "A new medical AI benchmark from Johns Hopkins shows Claude achieving 94% accuracy on clinical reasoning tasks, compared to 89% for GPT-5 and 87% for Gemini Ultra 2. Researchers credit Claude's instruction-following consistency for the strong result.",
+    "source": "JAMA Network",
+    "url": "https://example.com/claude-medical-benchmark",
+    "published_at": "2026-03-01T16:00:00Z",
+    "labels": {
+      "relevance_score": 9,
+      "topic": "product",
+      "sentiment": "positive"
+    }
+  },
+  {
+    "title": "European startup ecosystem report highlights AI talent migration",
+    "body": "A new report shows European AI researchers increasingly moving to US companies, with Anthropic and OpenAI cited as top destinations. The trend has sparked policy discussions about brain drain in the EU tech sector.",
+    "source": "Sifted",
+    "url": "https://example.com/eu-ai-talent",
+    "published_at": "2026-03-01T17:00:00Z",
+    "labels": {
+      "relevance_score": 6,
+      "topic": "business",
+      "sentiment": "neutral"
+    }
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "event_id": "eval-001",
+    "summary": "Breaking: Claude API returns harmful content to a minor in a widely-shared TikTok video. Video has 2M views. Content appears to bypass safety filters through a novel jailbreak technique.",
+    "source": "social-monitor",
+    "timestamp": "2026-03-01T08:00:00Z",
+    "labels": {
+      "tier": "P0"
+    }
+  },
+  {
+    "event_id": "eval-002",
+    "summary": "Competitor Cohere announces new enterprise partnership with Salesforce. No direct impact on existing Anthropic accounts.",
+    "source": "competitive-intel",
+    "timestamp": "2026-03-01T09:00:00Z",
+    "labels": {
+      "tier": "P2"
+    }
+  },
+  {
+    "event_id": "eval-003",
+    "summary": "Washington Post preparing story about Anthropic's energy consumption and environmental impact. Reporter has reached out for comment with a 24-hour deadline.",
+    "source": "media-monitor",
+    "timestamp": "2026-03-01T10:00:00Z",
+    "labels": {
+      "tier": "P1"
+    }
+  },
+  {
+    "event_id": "eval-004",
+    "summary": "Anthropic employee posts internal Slack screenshot to Twitter showing casual conversation. No sensitive information visible but sets a concerning precedent.",
+    "source": "social-monitor",
+    "timestamp": "2026-03-01T11:00:00Z",
+    "labels": {
+      "tier": "P1"
+    }
+  },
+  {
+    "event_id": "eval-005",
+    "summary": "Routine analyst note from Morgan Stanley reiterates positive outlook on AI sector. Mentions Anthropic alongside peers with no new information.",
+    "source": "competitive-intel",
+    "timestamp": "2026-03-01T12:00:00Z",
+    "labels": {
+      "tier": "P2"
+    }
+  },
+  {
+    "event_id": "eval-006",
+    "summary": "Whistleblower complaint filed with SEC alleging Anthropic misrepresented safety testing results to investors during last funding round. Complaint is public record.",
+    "source": "policy-monitor",
+    "timestamp": "2026-03-01T13:00:00Z",
+    "labels": {
+      "tier": "P0"
+    }
+  }
+]

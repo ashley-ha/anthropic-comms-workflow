@@ -1,30 +1,128 @@
 [
   {
-    "title": "Anthropic expands enterprise Claude integrations for regulated teams",
-    "body": "The model release highlights stronger governance controls and policy-ready workflows for large organizations.",
-    "source": "TechLedger",
-    "url": "https://example.com/enterprise-claude",
-    "published_at": "2026-03-01T08:00:00Z"
+    "title": "Anthropic expands Claude enterprise tier with SOC 2 compliance and admin controls",
+    "body": "Anthropic announced a major update to its enterprise offering, adding SOC 2 Type II certification, granular admin controls, and SSO integration. The move positions Claude as a serious contender for regulated industries including healthcare and financial services. CTO of a Fortune 500 bank was quoted saying the compliance features 'remove the last barrier to adoption.'",
+    "source": "TechCrunch",
+    "url": "https://example.com/anthropic-enterprise",
+    "published_at": "2026-03-05T08:00:00Z"
   },
   {
-    "title": "Industry panel debates AI safety and regulation momentum",
-    "body": "Policy experts discussed AI safety evaluation standards and future regulation timelines.",
-    "source": "PolicyWire",
-    "url": "https://example.com/policy-panel",
-    "published_at": "2026-03-01T09:00:00Z"
+    "title": "EU AI Act enforcement begins: what frontier labs need to know",
+    "body": "The European Union began formal enforcement of the AI Act this week, with frontier AI companies including Anthropic, OpenAI, and Google DeepMind facing new transparency and safety evaluation requirements. Compliance timelines vary by risk tier, but general-purpose AI providers must submit technical documentation within 12 months. Industry groups expressed concern about the cost of compliance.",
+    "source": "Reuters",
+    "url": "https://example.com/eu-ai-act-enforcement",
+    "published_at": "2026-03-05T09:15:00Z"
   },
   {
-    "title": "Quarterly cloud earnings report",
-    "body": "General market commentary with no major impact on Anthropic strategy.",
-    "source": "MarketNow",
-    "url": "https://example.com/cloud-earnings",
-    "published_at": "2026-03-01T10:00:00Z"
+    "title": "OpenAI launches GPT-5 with reasoning capabilities, intensifying competition",
+    "body": "OpenAI released GPT-5, claiming significant improvements in multi-step reasoning and code generation. Early benchmarks show competitive performance with Claude on standard evaluations. Analysts note the launch could pressure Anthropic's enterprise sales pipeline, though Claude's safety reputation remains a differentiator for risk-averse buyers.",
+    "source": "The Information",
+    "url": "https://example.com/gpt5-launch",
+    "published_at": "2026-03-05T10:00:00Z"
   },
   {
-    "title": "Analysts note strong adoption for Claude API in customer support",
-    "body": "Report cites positive enterprise adoption and partnership activity.",
-    "source": "AnalystBrief",
-    "url": "https://example.com/claude-adoption",
-    "published_at": "2026-03-01T11:00:00Z"
+    "title": "Senate Commerce Committee schedules hearing on AI safety standards",
+    "body": "The U.S. Senate Commerce Committee announced a hearing on AI safety standards for next month, with witnesses expected from Anthropic, NIST, and academic researchers. The hearing will focus on whether voluntary commitments from AI labs are sufficient or if binding regulation is needed. Senator Maria Cantwell said the committee wants to 'move beyond talking points.'",
+    "source": "Politico",
+    "url": "https://example.com/senate-ai-hearing",
+    "published_at": "2026-03-05T11:30:00Z"
+  },
+  {
+    "title": "Anthropic's Dario Amodei publishes essay on responsible scaling",
+    "body": "Anthropic CEO Dario Amodei published a detailed essay outlining the company's approach to responsible scaling, including new commitments around pre-deployment testing and red-teaming for Claude models. The essay acknowledges tensions between safety and speed, arguing that 'the companies best positioned to lead on safety are those actually building the technology.' Commentary from the AI safety community has been largely positive.",
+    "source": "Anthropic Blog",
+    "url": "https://example.com/amodei-responsible-scaling",
+    "published_at": "2026-03-05T12:00:00Z"
+  },
+  {
+    "title": "Google DeepMind announces Gemini Ultra 2 with multimodal reasoning",
+    "body": "Google DeepMind unveiled Gemini Ultra 2, emphasizing improvements in multimodal understanding and scientific reasoning. The company claims state-of-the-art performance on several benchmarks. The release intensifies the three-way competition between Google, OpenAI, and Anthropic for enterprise and developer adoption.",
+    "source": "The Verge",
+    "url": "https://example.com/gemini-ultra-2",
+    "published_at": "2026-03-05T13:00:00Z"
+  },
+  {
+    "title": "Major hospital system deploys Claude for clinical documentation",
+    "body": "Kaiser Permanente announced a pilot program using Claude to assist physicians with clinical documentation, reducing time spent on notes by an estimated 40%. The deployment includes human-in-the-loop review for all AI-generated content. Anthropic worked closely with Kaiser's compliance team to meet HIPAA requirements.",
+    "source": "STAT News",
+    "url": "https://example.com/kaiser-claude-pilot",
+    "published_at": "2026-03-05T14:00:00Z"
+  },
+  {
+    "title": "Quarterly cloud earnings: AWS, Azure, and GCP all beat expectations",
+    "body": "All three major cloud providers reported earnings above analyst expectations, driven by AI workload demand. AWS revenue grew 18% year-over-year, while Azure saw 22% growth. Google Cloud credited Gemini integrations for attracting new enterprise customers. AI infrastructure spending continues to accelerate across the industry.",
+    "source": "Bloomberg",
+    "url": "https://example.com/cloud-earnings-q1",
+    "published_at": "2026-03-05T15:00:00Z"
+  },
+  {
+    "title": "AI safety researchers raise concerns about autonomous agent deployments",
+    "body": "A group of prominent AI safety researchers, including former Anthropic employees, published a letter expressing concern about the pace of autonomous AI agent deployments across the industry. The letter calls for standardized safety testing and human oversight requirements before agents are deployed in high-stakes environments. Anthropic was praised for its responsible scaling policy but urged to go further.",
+    "source": "MIT Technology Review",
+    "url": "https://example.com/agent-safety-concerns",
+    "published_at": "2026-03-05T16:00:00Z"
+  },
+  {
+    "title": "Nvidia reports record revenue as AI chip demand outpaces supply",
+    "body": "Nvidia posted another quarter of record revenue, with data center GPU sales up 200% year-over-year. CEO Jensen Huang said demand from AI labs and cloud providers continues to exceed supply. The earnings report did not mention specific customers but analysts note Anthropic, OpenAI, and Google are among the largest GPU buyers.",
+    "source": "CNBC",
+    "url": "https://example.com/nvidia-earnings",
+    "published_at": "2026-03-05T16:30:00Z"
+  },
+  {
+    "title": "Anthropic hires former White House AI policy advisor",
+    "body": "Anthropic announced the hiring of Dr. Sarah Chen, formerly a senior AI policy advisor at the White House Office of Science and Technology Policy. Chen will lead Anthropic's government affairs team and work on the company's approach to AI regulation. The hire signals Anthropic's deepening engagement with policymakers.",
+    "source": "Axios",
+    "url": "https://example.com/anthropic-chen-hire",
+    "published_at": "2026-03-05T17:00:00Z"
+  },
+  {
+    "title": "Study finds AI-generated text increasingly indistinguishable from human writing",
+    "body": "A new Stanford study found that humans can distinguish AI-generated text from human writing only 52% of the time, barely above chance. The study tested outputs from Claude, GPT-5, and Gemini across multiple writing genres. Researchers warn this has implications for misinformation, academic integrity, and content authentication.",
+    "source": "Nature",
+    "url": "https://example.com/ai-text-detection-study",
+    "published_at": "2026-03-05T18:00:00Z"
+  },
+  {
+    "title": "Brazilian government selects Claude for national education platform",
+    "body": "Brazil's Ministry of Education announced that Anthropic's Claude will power the AI tutoring component of its national digital education platform, serving 30 million students. The multi-year contract includes localization for Brazilian Portuguese and content safety guardrails developed in partnership with local educators.",
+    "source": "Financial Times",
+    "url": "https://example.com/brazil-claude-education",
+    "published_at": "2026-03-04T08:00:00Z"
+  },
+  {
+    "title": "Venture capital investment in AI startups reaches new high",
+    "body": "Global VC investment in AI startups hit $45 billion in Q1 2026, according to PitchBook data. Foundation model companies attracted the largest share, with Anthropic, OpenAI, and Mistral leading recent funding rounds. Critics argue valuations are disconnected from revenue, while investors point to long-term platform potential.",
+    "source": "Wall Street Journal",
+    "url": "https://example.com/ai-vc-investment",
+    "published_at": "2026-03-04T10:00:00Z"
+  },
+  {
+    "title": "Apple integrates Claude into Xcode for AI-assisted development",
+    "body": "Apple announced that Claude will be available as an AI coding assistant within Xcode, its developer IDE. The integration supports code completion, debugging, and documentation generation. Apple chose Claude over competitors citing its instruction-following accuracy and code safety features. The partnership is expected to reach millions of iOS developers.",
+    "source": "9to5Mac",
+    "url": "https://example.com/apple-xcode-claude",
+    "published_at": "2026-03-04T12:00:00Z"
+  },
+  {
+    "title": "Tesla announces fully autonomous rideshare service in three cities",
+    "body": "Tesla launched its autonomous rideshare service in San Francisco, Los Angeles, and Miami, competing directly with Waymo. The service uses Tesla's FSD v13 system. Early reviews are mixed, with some riders reporting uncomfortable lane changes and one minor fender bender. The launch is unrelated to AI language model competition.",
+    "source": "Wired",
+    "url": "https://example.com/tesla-rideshare",
+    "published_at": "2026-03-04T14:00:00Z"
+  },
+  {
+    "title": "Data privacy groups file complaint against AI training practices",
+    "body": "A coalition of data privacy organizations filed a formal complaint with the FTC alleging that several AI companies, including Anthropic and OpenAI, used copyrighted web content for model training without adequate consent. Anthropic has previously stated it respects robots.txt and offers opt-out mechanisms, but privacy advocates argue these measures are insufficient.",
+    "source": "Washington Post",
+    "url": "https://example.com/ai-training-data-complaint",
+    "published_at": "2026-03-04T16:00:00Z"
+  },
+  {
+    "title": "New benchmark shows Claude outperforms competitors on safety evaluations",
+    "body": "Researchers at the Center for AI Safety released a new benchmark measuring AI model refusal of harmful requests, jailbreak resistance, and output honesty. Claude scored highest overall, with particularly strong performance on refusing to generate misleading content. The benchmark has been endorsed by NIST as a reference evaluation.",
+    "source": "VentureBeat",
+    "url": "https://example.com/claude-safety-benchmark",
+    "published_at": "2026-03-04T17:00:00Z"
   }
 ]
