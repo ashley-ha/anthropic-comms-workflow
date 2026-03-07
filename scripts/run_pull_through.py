@@ -25,7 +25,7 @@ if __name__ == "__main__":
             sys.exit(1)
         print("Analyzing message pull-through in LIVE earned media...")
     else:
-        articles_path = root / "data" / "mock_articles.json"
+        articles_path = root / "data" / "articles.json"
         print("Analyzing message pull-through in earned media...")
 
     output_path = root / "outputs" / "pull_through_report.md"

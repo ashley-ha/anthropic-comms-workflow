@@ -263,8 +263,8 @@ Run `python evals/eval_runner.py` to generate a full report.
 ```
 .
 ├── data/                         # Mock datasets + labeled eval data
-│   ├── mock_articles.json        # 18 realistic press articles
-│   ├── mock_events.json          # 8 communications events
+│   ├── articles.json             # 18 sample press articles
+│   ├── events.json               # 8 sample communications events
 │   ├── briefing_request.json     # Sample briefing input
 │   ├── key_messages.json         # Anthropic key messaging framework
 │   ├── internal_comms_request.json # Sample internal comms brief

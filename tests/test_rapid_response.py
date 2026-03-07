@@ -48,7 +48,7 @@ class TestEventAssessment(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "alerts.json"
             summary = build_alerts(
-                repo_root / "data" / "mock_events.json",
+                repo_root / "data" / "events.json",
                 output,
             )
             self.assertTrue(output.exists())

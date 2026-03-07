@@ -51,7 +51,7 @@ class TestArticleAnalysis(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "digest.md"
             summary = build_digest(
-                repo_root / "data" / "mock_articles.json",
+                repo_root / "data" / "articles.json",
                 output,
                 threshold=6,
             )

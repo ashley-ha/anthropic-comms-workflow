@@ -27,7 +27,7 @@ if __name__ == "__main__":
             sys.exit(1)
         print(f"Building press digest from LIVE articles (threshold={threshold})...")
     else:
-        input_path = root / "data" / "mock_articles.json"
+        input_path = root / "data" / "articles.json"
         print(f"Building press digest (threshold={threshold})...")
 
     output_path = root / "outputs" / "press_digest.md"

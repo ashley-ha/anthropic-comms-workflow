@@ -51,10 +51,10 @@ Uses direct message-based generation (no tool_use) since the output is a long-fo
 
 ```
 Press Digest:
-  mock_articles.json → Claude analyze_article() → filter by threshold → format Markdown → Slack webhook
+  articles.json → Claude analyze_article() → filter by threshold → format Markdown → Slack webhook
 
 Rapid Response:
-  mock_events.json → Claude assess_event() → sort by priority → format JSON → Slack webhook (P0/P1 only)
+  events.json → Claude assess_event() → sort by priority → format JSON → Slack webhook (P0/P1 only)
 
 Briefing Generator:
   briefing_request.json → Claude generate_briefing() → format Markdown

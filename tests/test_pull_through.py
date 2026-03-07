@@ -113,7 +113,7 @@ class TestBuildPullThroughReport(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "pull_through_report.md"
             summary = build_pull_through_report(
-                articles_path=repo_root / "data" / "mock_articles.json",
+                articles_path=repo_root / "data" / "articles.json",
                 messages_path=repo_root / "data" / "key_messages.json",
                 output_path=output,
             )
@@ -134,7 +134,7 @@ class TestBuildPullThroughReport(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "pull_through_report.md"
             summary = build_pull_through_report(
-                articles_path=repo_root / "data" / "mock_articles.json",
+                articles_path=repo_root / "data" / "articles.json",
                 messages_path=repo_root / "data" / "key_messages.json",
                 output_path=output,
             )

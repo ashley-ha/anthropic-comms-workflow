@@ -21,7 +21,7 @@ if __name__ == "__main__":
     print("Running rapid response analysis...")
     output_path = root / "outputs" / "rapid_response_alerts.json"
     summary = build_alerts(
-        input_path=root / "data" / "mock_events.json",
+        input_path=root / "data" / "events.json",
         output_path=output_path,
     )
     print(f"Alerts complete: {summary}")
