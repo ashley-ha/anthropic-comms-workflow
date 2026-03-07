@@ -49,6 +49,11 @@ def build_internal_comms(
     logger.info("Stage 3: Formatting for channels: %s", ", ".join(channels))
     formatted = _format_channels(draft, channels, request["subject"])
 
+    # Normalize sensitivity_flags in case Claude returns a string instead of array
+    flags = review.get("sensitivity_flags", [])
+    if isinstance(flags, str):
+        review["sensitivity_flags"] = [flags]
+
     # Build output report
     lines = _format_report(request, draft, review, formatted)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -133,7 +138,7 @@ def _format_report(
 
     if review.get("suggested_edits"):
         lines.extend(["### Suggested Edits", ""])
-        for edit in review["suggested_edits"]:
+        for edit in suggested_edits:
             lines.append(f"- {edit}")
         lines.append("")
 
