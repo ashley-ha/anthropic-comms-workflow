@@ -23,17 +23,28 @@ See `role.md` for the full job description. Every feature should map back to the
 - Model is configurable via `CLAUDE_MODEL` env var (default: claude-sonnet-4-20250514)
 - Outputs go to `outputs/` (gitignored except .gitkeep)
 - Mock data in `data/` — synthetic, safe for public sharing
+- Live data via `sources/rss_fetcher.py` — pulls real articles from AI-focused RSS feeds
 
 ## Running
 ```bash
 source .venv/bin/activate
-python scripts/run_press_digest.py
+
+# Fetch live articles from RSS feeds (required before --live)
+python scripts/run_fetch_articles.py              # fetch all
+python scripts/run_fetch_articles.py --limit 15   # fetch and cap at 15
+
+# Run workflows (add --live to use real articles instead of mock data)
+python scripts/run_press_digest.py                # mock data
+python scripts/run_press_digest.py --live         # live RSS articles
 python scripts/run_rapid_response.py
 python scripts/run_briefing.py
-python scripts/run_pull_through.py
+python scripts/run_pull_through.py                # mock data
+python scripts/run_pull_through.py --live         # live RSS articles
 python scripts/run_internal_comms.py
+
+# Evals and tests
 python evals/eval_runner.py
-python -m unittest discover -s tests -p 'test_*.py'
+python -m unittest discover -s tests -t . -p 'test_*.py'
 ```
 
 ## Testing Standards

@@ -16,6 +16,27 @@ This project implements five real Claude-powered workflows that a Communications
 
 All workflows use Claude's **tool_use** (function calling) for structured outputs — no fragile JSON parsing from freeform text.
 
+Workflows can analyze **live articles** pulled from real RSS feeds (TechCrunch, The Verge, Ars Technica, Wired, MIT Technology Review, The Guardian, VentureBeat) — not just mock data.
+
+## Use Cases: A Day in the Life of a Comms Team
+
+These workflows address real pain points that communications teams face daily at fast-moving AI companies:
+
+**6:30 AM — What happened overnight?**
+The **Press Digest** fetches live articles from 7 news sources, has Claude score each for relevance and sentiment, and delivers a prioritized briefing before the team's morning standup. Instead of manually scanning dozens of tabs, the team gets a ranked digest with rationale for why each story matters.
+
+**9:15 AM — A crisis breaks**
+A viral social media post or regulatory announcement hits. The **Rapid Response** system triages the event, assigns a P0/P1/P2 tier, generates initial talking points aligned with company values, and recommends who to loop in. The first 30 minutes of a crisis response are no longer spent figuring out *how bad it is* — Claude has already assessed that.
+
+**11:00 AM — Prepping the CEO for a live interview**
+The **Briefing Generator** synthesizes recent coverage, key messages, and anticipated tough questions into a spokesperson prep document. What used to take a comms strategist 2-3 hours of research and writing is now a structured first draft in under a minute.
+
+**2:00 PM — Are our messages landing?**
+After a product launch or executive interview, the **Pull-Through Tracker** analyzes earned media coverage against the company's messaging framework. It scores how faithfully journalists reflected key narratives, flags distortions, and identifies narrative gaps — turning a subjective "how'd we do?" into quantifiable data.
+
+**4:00 PM — Drafting the all-hands update**
+The **Internal Comms** pipeline drafts an all-hands message, runs it through an editorial review that scores tone, clarity, and sensitivity, flags phrases that could be problematic if leaked, and formats the approved content for both Slack and email distribution. The human reviewer gets structured feedback, not just a draft — they know exactly what to fix and why.
+
 ## Architecture
 
 ```mermaid
@@ -61,52 +82,60 @@ cp .env.example .env
 # Add your ANTHROPIC_API_KEY to .env
 ```
 
-### 2. Run Press Digest
+### 2. Fetch Live Articles (optional)
 
 ```bash
-python scripts/run_press_digest.py
+python scripts/run_fetch_articles.py --limit 15   # pulls real articles from RSS feeds
+```
+
+### 3. Run Press Digest
+
+```bash
+python scripts/run_press_digest.py          # uses mock data
+python scripts/run_press_digest.py --live   # uses live articles from step 2
 cat outputs/press_digest.md
 ```
 
-### 3. Run Rapid Response
+### 4. Run Rapid Response
 
 ```bash
 python scripts/run_rapid_response.py
 cat outputs/rapid_response_alerts.json
 ```
 
-### 4. Run Briefing Generator
+### 5. Run Briefing Generator
 
 ```bash
 python scripts/run_briefing.py
 cat outputs/briefing.md
 ```
 
-### 5. Run Pull-Through Tracker
+### 6. Run Pull-Through Tracker
 
 ```bash
-python scripts/run_pull_through.py
+python scripts/run_pull_through.py          # uses mock data
+python scripts/run_pull_through.py --live   # uses live articles from step 2
 cat outputs/pull_through_report.md
 ```
 
-### 6. Run Internal Comms Workflow
+### 7. Run Internal Comms Workflow
 
 ```bash
 python scripts/run_internal_comms.py
 cat outputs/internal_comms_report.md
 ```
 
-### 7. Run Evaluation Suite
+### 8. Run Evaluation Suite
 
 ```bash
 python evals/eval_runner.py
 cat outputs/eval_results.json
 ```
 
-### 8. Run Tests
+### 9. Run Tests
 
 ```bash
-python -m unittest discover -s tests -p 'test_*.py'
+python -m unittest discover -s tests -t . -p 'test_*.py'
 ```
 
 ## Sample Outputs
@@ -248,6 +277,7 @@ Run `python evals/eval_runner.py` to generate a full report.
 │   ├── eval_runner.py            # Runnable eval script
 │   └── *.yaml                    # Metric specs for CI gating
 ├── playbook/                     # Replicable comms automation playbook
+├── sources/                      # Live data ingestion (RSS fetcher)
 ├── scripts/                      # Entry points for each workflow
 ├── src/comms_ai_portfolio/       # Core implementation
 │   ├── claude_client.py          # Anthropic SDK wrapper with tool schemas
@@ -273,7 +303,7 @@ Run `python evals/eval_runner.py` to generate a full report.
 ## Safety
 
 - No embedded credentials or API keys
-- Mock/synthetic data only (safe for public sharing)
+- Mock/synthetic data included (safe for public sharing); live data fetched from public RSS feeds
 - Configuration via `.env` file
 - System prompts designed to prevent generation of harmful or dishonest content
 - All Claude outputs marked as AI-generated recommendations requiring human review
