@@ -4,13 +4,60 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import urllib.request
 from pathlib import Path
 from typing import Any
 
+# Slack limits: 50 blocks per message, 3000 chars per text block
+MAX_ARTICLES_IN_SLACK = 10
+
+
+def _md_to_mrkdwn(text: str) -> str:
+    """Convert Markdown formatting to Slack mrkdwn."""
+    # Replace Markdown links [text](url) with Slack links <url|text>
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"<\2|\1>", text)
+    # Strip blockquote markers (Slack renders > natively)
+    # Strip heading markers
+    text = re.sub(r"^#{1,3}\s+", "", text, flags=re.MULTILINE)
+    return text
+
+
+def _parse_digest_articles(content: str) -> tuple[str, list[dict[str, str]]]:
+    """Parse the Markdown digest into a summary line and article entries."""
+    lines = content.split("\n")
+    summary = ""
+    articles: list[dict[str, str]] = []
+    current: dict[str, str] = {}
+
+    for line in lines:
+        if line.startswith("**") and "articles selected" in line:
+            summary = _md_to_mrkdwn(line)
+        elif line.startswith("### "):
+            if current.get("title"):
+                articles.append(current)
+            # Strip "### 1. " prefix
+            current = {"title": re.sub(r"^###\s+\d+\.\s+", "", line), "meta": "", "rationale": "", "link": ""}
+        elif current and line.startswith("**Source:**"):
+            current["meta"] = _md_to_mrkdwn(line)
+        elif current and line.startswith("**Relevance:**"):
+            current["meta"] += "\n" + _md_to_mrkdwn(line)
+        elif current and line.startswith(">"):
+            current["rationale"] = line.lstrip("> ").strip()
+        elif current and line.startswith("[Read full article]"):
+            current["link"] = _md_to_mrkdwn(line)
+
+    if current.get("title"):
+        articles.append(current)
+
+    return summary, articles
+
 
 def post_digest_to_slack(digest_path: Path, webhook_url: str | None = None) -> bool:
     """Post a press digest summary to Slack via webhook.
+
+    Parses the Markdown digest and builds proper Slack Block Kit messages
+    with one section per article, dividers, and correct mrkdwn formatting.
 
     Args:
         digest_path: Path to the generated Markdown digest.
@@ -25,24 +72,38 @@ def post_digest_to_slack(digest_path: Path, webhook_url: str | None = None) -> b
         return False
 
     content = digest_path.read_text(encoding="utf-8")
-    # Truncate for Slack's 3000-char block limit
-    if len(content) > 2800:
-        content = content[:2800] + "\n\n_[Truncated — see full digest in shared drive]_"
+    summary, articles = _parse_digest_articles(content)
 
-    payload = {
-        "blocks": [
-            {
-                "type": "header",
-                "text": {"type": "plain_text", "text": "Daily Press Digest"},
-            },
-            {
-                "type": "section",
-                "text": {"type": "mrkdwn", "text": content},
-            },
-        ],
-    }
+    blocks: list[dict[str, Any]] = [
+        {
+            "type": "header",
+            "text": {"type": "plain_text", "text": "Daily Press Digest"},
+        },
+        {
+            "type": "context",
+            "elements": [{"type": "mrkdwn", "text": summary}],
+        },
+        {"type": "divider"},
+    ]
 
-    return _post_webhook(url, payload)
+    for article in articles[:MAX_ARTICLES_IN_SLACK]:
+        text = f"*{article['title']}*\n{article['meta']}"
+        if article["rationale"]:
+            text += f"\n>{article['rationale']}"
+        if article["link"]:
+            text += f"\n{article['link']}"
+
+        blocks.append({"type": "section", "text": {"type": "mrkdwn", "text": text}})
+        blocks.append({"type": "divider"})
+
+    remaining = len(articles) - MAX_ARTICLES_IN_SLACK
+    if remaining > 0:
+        blocks.append({
+            "type": "context",
+            "elements": [{"type": "mrkdwn", "text": f"_+ {remaining} more articles — see full digest for details_"}],
+        })
+
+    return _post_webhook(url, {"blocks": blocks})
 
 
 def post_alerts_to_slack(alerts_path: Path, webhook_url: str | None = None) -> bool:
