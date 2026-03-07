@@ -138,7 +138,7 @@ def _format_report(
 
     if review.get("suggested_edits"):
         lines.extend(["### Suggested Edits", ""])
-        for edit in suggested_edits:
+        for edit in review["suggested_edits"]:
             lines.append(f"- {edit}")
         lines.append("")
 
